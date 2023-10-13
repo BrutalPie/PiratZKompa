@@ -1,6 +1,6 @@
 from pygame import *
 
-direction = "right"
+
 
 #клас-батько для інших спрайтів
 class GameSprite(sprite.Sprite):
@@ -42,12 +42,10 @@ class Enemy(GameSprite):
     
 
 global win_width 
-win_width = 1300
+win_width = 1366
 global win_height
-win_height = 700
+win_height = 768
 
 global window
 window = display.set_mode((win_width, win_height))
 
-bullets_left = sprite.Group()
-bullets_right = sprite.Group()
