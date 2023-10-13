@@ -162,6 +162,7 @@ while run:
                     if button.check_click(mouse_pos) == True:
                         choose_display = 1
                         print("Левая кнопка мыши нажата в точке", mouse_pos)
+                        continue
                     elif button.check_click(mouse_pos) == False:
                         choose_display = 0
                         print("Клік не потрапив в зону кнопок")

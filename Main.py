@@ -42,9 +42,9 @@ class Enemy(GameSprite):
     
 
 global win_width 
-win_width = 1366
+win_width = 1300
 global win_height
-win_height = 768
+win_height = 700
 
 global window
 window = display.set_mode((win_width, win_height))
