@@ -47,6 +47,5 @@ def update_display(window):
         #Parameters:               surface,      color,       x,   y,   length, height, width,    text,      text_color
         Buton1 = Button(window, (107,142,35), 225, 135, 200,    100,    0,        "Play", (255,255,255))
         Button.add(Buton1)
-        display.flip()
 wind = display_Set()
 update_display(wind)

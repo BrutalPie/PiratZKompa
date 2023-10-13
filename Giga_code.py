@@ -2,6 +2,7 @@ import pygame
 from Main import *
 from MenuButton import *
 
+
 pygame.init()
 
 class Player(GameSprite):
@@ -69,15 +70,13 @@ class Bullet(GameSprite):
             if self.rect.x > win_width:
                 self.kill()
 
-
+choose_display = 0
 display.set_caption("Labirint")
-back = transform.scale(image.load('image/island.png'),(1366,768))
+#back = ret_back(choose_display)
+back = transform.scale(image.load('image/island.png'),(win_width,win_height))
 
 packman = Player('image/Pirat.png', 3, win_height - 90, 80, 85, 0, 0)
 final_sprite = GameSprite('image/Pirat.png', win_width/2-100/2, win_height/2-100/2, 100, 100)
-
-
-choose_display = 0
 
 strike = 0
 
@@ -158,10 +157,14 @@ while run:
         elif e.type == MOUSEBUTTONDOWN:
             if e.button == 1:
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
-                print("Левая кнопка мыши нажата в точке", mouse_pos)
+                
                 for button in buttons:
                     if button.check_click(mouse_pos) == True:
                         choose_display = 1
+                        print("Левая кнопка мыши нажата в точке", mouse_pos)
+                    elif button.check_click(mouse_pos) == False:
+                        choose_display = 0
+                        print("Клік не потрапив в зону кнопок")
                         
                 
 
@@ -169,13 +172,12 @@ while run:
     
     if choose_display == 0:
         window.blit(back,(0,0))
-        for button in buttons:
-            button.draw(window)
-
-        
+        finish = True
+        draw_buttons()
+    else:
         if finish == False and choose_display>0:
             from level_1 import *
-            back = transform.scale(image.load('image/cave.png'),(1366,768))
+            back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
             barriers = ret_barriers()
             monsters = ret_monsters()
             #win = f1.render(str(money),True,(59, 58, 120))
@@ -221,7 +223,7 @@ while run:
             if sprite.spritecollide(packman, monsters, False):
                 finish = True
                 # обчислюємо ставлення
-                img = transform.scale(image.load("image/lose.png"),(1366,768))
+                img = transform.scale(image.load("image/lose.png"),(win_width,win_height))
                 d = img.get_width() // img.get_height()
                 
                 window.blit(img, (0, 0))
@@ -231,7 +233,7 @@ while run:
                 final_sprite.reset()
                 if sprite.collide_rect(packman, final_sprite):
                     finish = True
-                    img = transform.scale(image.load("image/win.png"),(1368,768))
+                    img = transform.scale(image.load("image/win.png"),(win_width,win_height))
                     window.blit(img, (0, 0))
 
             #if sprite.spritecollide(packman, shops, False) and open_shop == True:
