@@ -63,12 +63,6 @@ def check_button_click(mouse_pos):
             return button
     return None
 
-# Этот код проверит, какая кнопка была нажата, и вернет соответствующий объект Button
-
-
-# Далее вы можете выполнить какое-либо действие на основе нажатой кнопки
-
-
 def draw_buttons():
     for button in buttons:
         button.draw(window)

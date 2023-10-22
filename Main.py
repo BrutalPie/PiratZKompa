@@ -1,7 +1,5 @@
 from pygame import *
 
-
-
 #клас-батько для інших спрайтів
 class GameSprite(sprite.Sprite):
     #конструктор класу
