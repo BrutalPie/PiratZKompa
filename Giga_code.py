@@ -119,6 +119,9 @@ run = True
 global mouse_pos
 mouse_pos = 0
 click = 0
+
+
+clicked_button=0
 while run:
 
     time.delay(5)
@@ -165,14 +168,15 @@ while run:
             if e.button == 1:
                 
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
-                for button in buttons:
+                clicked_button = check_button_click(mouse_pos)
+                '''for button in buttons:
                     if button.check_click(mouse_pos) == True:
                         choose_display = 1
                         print("Левая кнопка мыши нажата в точке", mouse_pos,"/",choose_display)
                         break
                     elif button.check_click(mouse_pos) == False:
                         choose_display = 0
-                        print("Клік не потрапив в зону кнопок",choose_display)
+                        print("Клік не потрапив в зону кнопок",choose_display)'''
                                 
 
 #перевірка, що гра ще не завершена
@@ -180,6 +184,17 @@ while run:
     if choose_display == 0:
         window.blit(back,(0,0))
         draw_buttons()
+
+        if clicked_button is not None:
+            if clicked_button.text == "Play":
+                # Действия при нажатии кнопки "Play"
+                choose_display = 1
+            elif clicked_button.text == "Settings":
+                # Действия при нажатии кнопки "Settings"
+                pass
+            elif clicked_button.text == "Exit":
+                # Действия при нажатии кнопки "Exit"
+                quit()
        
         
     if  choose_display == 1:
@@ -266,4 +281,4 @@ while run:
                 #buy=False'''
                 
 
-        display.update()
+    display.update()

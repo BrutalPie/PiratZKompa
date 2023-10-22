@@ -53,10 +53,23 @@ class Button:
             return False
         return self.clicked
 # Создаем несколько кнопок и добавляем их в список
-buttons.append(Button("Кнопка 1", 100, 100, 200, 50))
-buttons.append(Button("Кнопка 2", 100, 200, 200, 50))
-buttons.append(Button("Кнопка 3", 100, 300, 200, 50))
+buttons.append(Button("Play", 100, 100, 200, 50))
+buttons.append(Button("Settings", 100, 200, 200, 50))
+buttons.append(Button("Exit", 100, 300, 200, 50))
+
+def check_button_click(mouse_pos):
+    for button in buttons:
+        if button.check_click(mouse_pos):
+            return button
+    return None
+
+# Этот код проверит, какая кнопка была нажата, и вернет соответствующий объект Button
+
+
+# Далее вы можете выполнить какое-либо действие на основе нажатой кнопки
+
 
 def draw_buttons():
     for button in buttons:
         button.draw(window)
+
