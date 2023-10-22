@@ -121,7 +121,7 @@ mouse_pos = 0
 click = 0
 
 
-clicked_button=0
+
 while run:
 
     time.delay(5)
@@ -143,6 +143,8 @@ while run:
             elif e.key == K_SPACE:
                 packman.fire(direction)
                 strike+=1
+            elif e.key == K_ESCAPE:
+                choose_display = 0
 
             #elif e.key ==K_f:
                 #open_shop = True
@@ -169,6 +171,19 @@ while run:
                 
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
                 clicked_button = check_button_click(mouse_pos)
+                if clicked_button is not None:
+                    if clicked_button.text == "Play":
+                        # Действия при нажатии кнопки "Play"
+                        choose_display = 1
+                    elif clicked_button.text == "Settings":
+                        # Действия при нажатии кнопки "Settings"
+                        print("хи хи ха ха")
+                        pass
+                    elif clicked_button.text == "Exit":
+                        # Действия при нажатии кнопки "Exit"
+                        pygame.quit
+
+
                 '''for button in buttons:
                     if button.check_click(mouse_pos) == True:
                         choose_display = 1
@@ -184,17 +199,6 @@ while run:
     if choose_display == 0:
         window.blit(back,(0,0))
         draw_buttons()
-
-        if clicked_button is not None:
-            if clicked_button.text == "Play":
-                # Действия при нажатии кнопки "Play"
-                choose_display = 1
-            elif clicked_button.text == "Settings":
-                # Действия при нажатии кнопки "Settings"
-                pass
-            elif clicked_button.text == "Exit":
-                # Действия при нажатии кнопки "Exit"
-                quit()
        
         
     if  choose_display == 1:
