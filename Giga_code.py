@@ -144,8 +144,6 @@ while run:
             elif e.key == K_ESCAPE:
                 choose_display = 0
                 back = transform.scale(image.load('image/island.png'),(win_width,win_height))
-
-
             #elif e.key ==K_f:
                 #open_shop = True
             #elif e.key == K_1:

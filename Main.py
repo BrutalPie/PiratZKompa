@@ -1,5 +1,5 @@
 from pygame import *
-from Buttons import *
+from Display_Set import *
 
 
 #клас-батько для інших спрайтів
