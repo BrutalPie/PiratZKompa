@@ -5,12 +5,12 @@ from Main import *
 def ret_barriers():
     barriers = sprite.Group()
 
-    w1 = GameSprite('image/stone.jpg', 133 * 1.79,380 * 0.83, 400 * 1.79,50 * 0.83)
-    w5 = GameSprite('image/stone.jpg', 133 * 1.79,380 * 0.83, 40 * 1.79,400 * 0.83)
-    w3 = GameSprite('image/stone.jpg', 133 * 1.79,120 * 0.83, 400 * 1.79,50 * 0.83)
-    w2 = GameSprite('image/stone.jpg', 453 * 1.79,800 * 0.83, 400 * 1.79,50 * 0.83)
-    w4 = GameSprite('image/stone.jpg', 843 * 1.79,590 * 0.83, 40 * 1.79,400 * 0.83)
-    w6 = GameSprite('image/stone.jpg', 133 * 1.79,-250 * 0.83, 40 * 1.79,400 * 0.83)
+    w1 = GameSprite('image/stone.jpg', 133 * 1.69,380 * 0.83, 400 * 1.69,50 * 0.83)
+    w5 = GameSprite('image/stone.jpg', 133 * 1.69,380 * 0.83, 40 * 1.69,400 * 0.83)
+    w3 = GameSprite('image/stone.jpg', 133 * 1.69,120 * 0.83, 400 * 1.69,50 * 0.83)
+    w2 = GameSprite('image/stone.jpg', 453 * 1.69,800 * 0.83, 400 * 1.69,50 * 0.83)
+    w4 = GameSprite('image/stone.jpg', 843 * 1.69,590 * 0.83, 40 * 1.69,400 * 0.83)
+    w6 = GameSprite('image/stone.jpg', 133 * 1.69,-250 * 0.83, 40 * 1.69,400 * 0.83)
     purse = GameSprite('image/purse.png', 1290 * 0.73,690 * 1.69, 80 * 0.73,80 * 1.69)
     murders = GameSprite('image/kill.png', 1240,10, 130,130)
     '''w1 = GameSprite('image/stone.jpg', 283 * x_scale, 240 * y_scale, 400 * x_scale, 40 * y_scale)
