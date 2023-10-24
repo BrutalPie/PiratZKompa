@@ -120,8 +120,6 @@ global mouse_pos
 mouse_pos = 0
 click = 0
 
-
-
 while run:
 
     time.delay(5)
@@ -145,6 +143,8 @@ while run:
                 strike+=1
             elif e.key == K_ESCAPE:
                 choose_display = 0
+                back = transform.scale(image.load('image/island.png'),(win_width,win_height))
+
 
             #elif e.key ==K_f:
                 #open_shop = True
@@ -181,7 +181,7 @@ while run:
                         pass
                     elif clicked_button.text == "Exit":
                         # Действия при нажатии кнопки "Exit"
-                        pygame.quit
+                        quit()
 
 
                 '''for button in buttons:
@@ -201,7 +201,7 @@ while run:
         draw_buttons()
        
         
-    if  choose_display == 1:
+    elif  choose_display == 1:
         from level_1 import *
         back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
         window.blit(back,(0,0))

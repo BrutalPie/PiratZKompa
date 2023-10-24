@@ -1,4 +1,5 @@
 from pygame import *
+from Buttons import *
 
 
 #клас-батько для інших спрайтів
@@ -37,14 +38,15 @@ class Enemy(GameSprite):
         else:
             self.rect.x += self.speed
 
-#def ret_bullets():
-    
 
+'''#def ret_bullets():
 global win_width 
-win_width = 1366
 global win_height
-win_height = 768
+win_info = display.Info()
+win_width = win_info.current_w
+win_height = win_info.current_h
+
 
 global window
-window = display.set_mode((win_width, win_height))
+window = display.set_mode((win_width, win_height))'''
 
