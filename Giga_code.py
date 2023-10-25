@@ -119,7 +119,7 @@ run = True
 global mouse_pos
 mouse_pos = 0
 click = 0
-
+y = 1
 while run:
 
     time.delay(5)
@@ -143,6 +143,7 @@ while run:
                 strike+=1
             elif e.key == K_ESCAPE:
                 choose_display = 0
+                
                 back = transform.scale(image.load('image/island.png'),(win_width,win_height))
             #elif e.key ==K_f:
                 #open_shop = True
@@ -169,9 +170,10 @@ while run:
                 
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
                 clicked_button = check_button_click(mouse_pos)
+                clicked_button_level = check_button_click(mouse_pos)
                 if clicked_button is not None:
                     if clicked_button.text == "Play":
-                        # Действия при нажатии кнопки "Play"
+                        
                         choose_display = 1
                     elif clicked_button.text == "Settings":
                         # Действия при нажатии кнопки "Settings"
@@ -180,7 +182,21 @@ while run:
                     elif clicked_button.text == "Exit":
                         # Действия при нажатии кнопки "Exit"
                         quit()
-
+                elif clicked_button_level is not None:
+                    if clicked_button_level.text == "1": 
+                        import level_1
+                        back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
+                        window.blit(back,(0,0))
+                        barriers = level_1.ret_barriers()
+                        monsters = level_1.ret_monsters()
+                        
+                    elif clicked_button_level.text == "2":
+                        import level_2
+                        back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
+                        window.blit(back,(0,0))
+                        barriers = level_2.ret_barriers()
+                        monsters = level_2.ret_monsters()
+                    choose_display = 1.1
 
                 '''for button in buttons:
                     if button.check_click(mouse_pos) == True:
@@ -197,14 +213,14 @@ while run:
     if choose_display == 0:
         window.blit(back,(0,0))
         draw_buttons()
-       
+
+    if choose_display == 1:
+        draw_buttons_level()
         
-    elif  choose_display == 1:
-        from level_1 import *
-        back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
-        window.blit(back,(0,0))
-        barriers = ret_barriers()
-        monsters = ret_monsters()
+        
+    elif  choose_display == 1.1:
+
+        
         #win = f1.render(str(money),True,(59, 58, 120))
         #window.blit(win,(1250,700))#Лічильник монет
             

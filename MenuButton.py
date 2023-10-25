@@ -30,7 +30,7 @@ BLACK = (0, 0, 0)
 # Создаем список кнопок
 global buttons
 buttons = []
-
+buttons_chose_level = []
 # Создаем класс для кнопок
 class Button:
     def __init__(self, text, x, y, width, height):
@@ -57,7 +57,14 @@ buttons.append(Button("Play", 100, 100, 200, 50))
 buttons.append(Button("Settings", 100, 200, 200, 50))
 buttons.append(Button("Exit", 100, 300, 200, 50))
 
-def check_button_click(mouse_pos):
+buttons_chose_level.append(Button("1", 50, 100, 100, 50))
+buttons_chose_level.append(Button("2", 50, 100, 100, 50))
+buttons_chose_level.append(Button("3", 50, 100, 100, 50))
+
+def check_button_click(mouse_pos,):
+    for button in buttons_chose_level:
+        if button.check_click(mouse_pos):
+            return button
     for button in buttons:
         if button.check_click(mouse_pos):
             return button
@@ -65,11 +72,13 @@ def check_button_click(mouse_pos):
 
 # Этот код проверит, какая кнопка была нажата, и вернет соответствующий объект Button
 
-
 # Далее вы можете выполнить какое-либо действие на основе нажатой кнопки
-
 
 def draw_buttons():
     for button in buttons:
+        button.draw(window)
+
+def draw_buttons_level():
+    for button in buttons_chose_level:
         button.draw(window)
 
