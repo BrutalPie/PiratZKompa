@@ -168,7 +168,7 @@ while run:
             elif e.key == K_s:
                 packman.y_speed = 0
         elif e.type == MOUSEBUTTONDOWN and choose_display!=1:
-            if e.button == 1:
+            #if e.button == 1:
                 
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
                 clicked_button = check_button_click(mouse_pos)
@@ -184,50 +184,13 @@ while run:
                                 barriers = level_1.ret_barriers()
                                 monsters = level_1.ret_monsters()
                                 choose_display = 1
-                            
-                        '''elif clicked_button_level.text == "2":
-                            import level_2
-                            back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
-                            window.blit(back,(0,0))
-                            barriers = level_2.ret_barriers()
-                            monsters = level_2.ret_monsters()
-                        choose_display = 1.1'''
+        
                 
-                    if clicked_button.text == "Settings":
-                        # Действия при нажатии кнопки "Settings"
-                        print("хи хи ха ха")
-                        pass
-                    elif clicked_button.text == "Exit":
-                        # Действия при нажатии кнопки "Exit"
-                        quit()
-                '''elif clicked_button_level is not None:
-                    if clicked_button_level.text == "1": 
-                        import level_1
-                        back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
-                        window.blit(back,(0,0))
-                        barriers = level_1.ret_barriers()
-                        monsters = level_1.ret_monsters()
-                        
-                    elif clicked_button_level.text == "2":
-                        import level_2
-                        back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
-                        window.blit(back,(0,0))
-                        barriers = level_2.ret_barriers()
-                        monsters = level_2.ret_monsters()
-                    choose_display = 1.1'''
-
-                '''for button in buttons:
-                    if button.check_click(mouse_pos) == True:
-                        choose_display = 1
-                        print("Левая кнопка мыши нажата в точке", mouse_pos,"/",choose_display)
-                        break
-                    elif button.check_click(mouse_pos) == False:
-                        choose_display = 0
-                        print("Клік не потрапив в зону кнопок",choose_display)'''
-                                
-
-#перевірка, що гра ще не завершена
-    
+                        if clicked_button.text == "Settings": 
+                            pass
+                        if clicked_button.text == "Exit":
+                            quit()
+        
     if choose_display == 0:
         window.blit(back,(0,0))
         draw_buttons()
