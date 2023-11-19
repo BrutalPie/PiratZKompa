@@ -167,15 +167,14 @@ while run:
                 packman.y_speed = 0
             elif e.key == K_s:
                 packman.y_speed = 0
-        elif e.type == MOUSEBUTTONDOWN and choose_display!=1:
-            #if e.button == 1:
-                
+        elif e.type == MOUSEBUTTONDOWN:
                 mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
                 clicked_button = check_button_click(mouse_pos)
-                clicked_button_level = check_button_click(mouse_pos)
+                clicked_button_level = check_button_click_level(mouse_pos)
                 if clicked_button is not None:
                     if clicked_button.text == "Play":
-                        draw_buttons_level()
+                        print(5+3)
+                        draw_buttons_level() 
                         if clicked_button is not None:
                             if clicked_button_level.text == "1": 
                                 import level_1
@@ -186,98 +185,94 @@ while run:
                                 choose_display = 1
         
                 
-                        if clicked_button.text == "Settings": 
-                            pass
-                        if clicked_button.text == "Exit":
-                            quit()
+                    if clicked_button.text == "Settings": 
+                        pass
+                    if clicked_button.text == "Exit":
+                        quit()
         
-    if choose_display == 0:
-        window.blit(back,(0,0))
-        draw_buttons()
-    '''elif choose_display == 1:
-        window.blit(back,(0,0))
-        draw_buttons_level()'''        
-        
-        
-    if  choose_display == 1:
-        
-        
-        #win = f1.render(str(money),True,(59, 58, 120))
-        #window.blit(win,(1250,700))#Лічильник монет
+        if choose_display == 0:
+            window.blit(back,(0,0))
+            draw_buttons()
             
-        #killl = f1.render(str(murder),True,(59, 58, 120))
-        #window.blit(killl,(1290,130))
-
-        #запускаємо рухи спрайтів
-        packman.update()
-        bullets_left.update("left")
-        bullets_right.update("right")
-        
-        #оновлюємо їх у новому місці при кожній ітерації циклу
-        packman.reset()
-        #рисуємо стіни 2
-        bullets_left.draw(window)
-        bullets_right.draw(window)
-        barriers.draw(window)
-
-
-        # kil = sprite.groupcollide(monsters, bullets_left, True, True)
-        #kil_1 = sprite.groupcollide(monsters, bullets_right, True, True)
-        
-
-        monsters.draw(window)
-        sprite.groupcollide(bullets_left, barriers, True, False)
-        sprite.groupcollide(bullets_right, barriers, True, False)
-
-        #coins.draw(window)
-        #shops.draw(window)
-
-        #hits = sprite.groupcollide(bullets_left, coins, True, True)
-        #hits_1 = sprite.groupcollide(bullets_right, coins, True, True)
-        
-        #if hits or hits_1:
-        #money+=1#Лічильник монет
-
-        #if kil or kil_1:
-        #murder+=1#Лічильник вбивств
-
-        #Перевірка зіткнення героя з ворогом та стінами
-        if sprite.spritecollide(packman, monsters, False):
-            finish = True
-            # обчислюємо ставлення
-            img = transform.scale(image.load("image/lose.png"),(win_width,win_height))
-            d = img.get_width() // img.get_height()
+        if  choose_display == 1:
+            
+            
+            #win = f1.render(str(money),True,(59, 58, 120))
+            #window.blit(win,(1250,700))#Лічильник монет
                 
-            window.blit(img, (0, 0))
-            #choose_display = 0
-                
-        
-        if len(monsters) == 0:
-            final_sprite.reset()
-            if sprite.collide_rect(packman, final_sprite):
+            #killl = f1.render(str(murder),True,(59, 58, 120))
+            #window.blit(killl,(1290,130))
+
+            #запускаємо рухи спрайтів
+            packman.update()
+            bullets_left.update("left")
+            bullets_right.update("right")
+            
+            #оновлюємо їх у новому місці при кожній ітерації циклу
+            packman.reset()
+            #рисуємо стіни 2
+            bullets_left.draw(window)
+            bullets_right.draw(window)
+            barriers.draw(window)
+
+
+            # kil = sprite.groupcollide(monsters, bullets_left, True, True)
+            #kil_1 = sprite.groupcollide(monsters, bullets_right, True, True)
+            
+
+            monsters.draw(window)
+            sprite.groupcollide(bullets_left, barriers, True, False)
+            sprite.groupcollide(bullets_right, barriers, True, False)
+
+            #coins.draw(window)
+            #shops.draw(window)
+
+            #hits = sprite.groupcollide(bullets_left, coins, True, True)
+            #hits_1 = sprite.groupcollide(bullets_right, coins, True, True)
+            
+            #if hits or hits_1:
+            #money+=1#Лічильник монет
+
+            #if kil or kil_1:
+            #murder+=1#Лічильник вбивств
+
+            #Перевірка зіткнення героя з ворогом та стінами
+            if sprite.spritecollide(packman, monsters, False):
                 finish = True
-                img = transform.scale(image.load("image/win.png"),(win_width,win_height))
+                # обчислюємо ставлення
+                img = transform.scale(image.load("image/lose.png"),(win_width,win_height))
+                d = img.get_width() // img.get_height()
+                    
                 window.blit(img, (0, 0))
+                #choose_display = 0
+                    
+            
+            if len(monsters) == 0:
+                final_sprite.reset()
+                if sprite.collide_rect(packman, final_sprite):
+                    finish = True
+                    img = transform.scale(image.load("image/win.png"),(win_width,win_height))
+                    window.blit(img, (0, 0))
 
-        #if sprite.spritecollide(packman, shops, False) and open_shop == True:
-            #imge = transform.scale(image.load("image/shop.back.jpg"),(1368,768))
-            #window.blit(imge, (0, 0))
-            #ware = sprite.Group()
+            #if sprite.spritecollide(packman, shops, False) and open_shop == True:
+                #imge = transform.scale(image.load("image/shop.back.jpg"),(1368,768))
+                #window.blit(imge, (0, 0))
+                #ware = sprite.Group()
 
-            #pick = GameSprite('image/shop/pick.png', 100,230, 200,200)
-            #mapp = GameSprite('image/shop/map.png', 550,230, 200,200)
-            #dig = GameSprite('image/shop/dig.png', 1000,230, 200,200)
-                
-            #ware.add(pick)
-            #ware.add(mapp)
-            #ware.add(dig)
+                #pick = GameSprite('image/shop/pick.png', 100,230, 200,200)
+                #mapp = GameSprite('image/shop/map.png', 550,230, 200,200)
+                #dig = GameSprite('image/shop/dig.png', 1000,230, 200,200)
+                    
+                #ware.add(pick)
+                #ware.add(mapp)
+                #ware.add(dig)
 
-            #ware.draw(window)
-            #if buy == True: 
-                #shop_message = "ви купили кирку"
-                #show = f1.render(shop_message,True,(59, 58, 120))
-                #window.blit(show,(300,600))
-                #buy=False'''
+                #ware.draw(window)
+                #if buy == True: 
+                    #shop_message = "ви купили кирку"
+                    #show = f1.render(shop_message,True,(59, 58, 120))
+                    #window.blit(show,(300,600))
+                    #buy=False'''
                 
 
     display.update()

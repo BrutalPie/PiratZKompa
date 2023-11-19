@@ -1,21 +1,3 @@
-'''from pygame import draw, font, Rect
-from Main import win_width, win_height, window
-
-global button_rect
-button_rect = Rect(300, 250, 200, 100)
-# Цвета
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-font.init()
-global button_font
-button_font = font.Font(None, 36)
-
-def draw_button(window, button_rect,button_font):
-    draw.rect(window, BLACK, button_rect)
-    text = button_font.render("Кнопка", True, WHITE)
-    text_rect = text.get_rect(center=button_rect.center)
-    window.blit(text, text_rect)'''
-
 import pygame
 from pygame import draw, font, Rect
 from Main import win_width, win_height, window
@@ -58,8 +40,8 @@ buttons.append(Button("Settings", 100, 200, 200, 50))
 buttons.append(Button("Exit", 100, 300, 200, 50))
 
 buttons_chose_level.append(Button("1", 450, 100, 100, 50))
-buttons_chose_level.append(Button("2", 550, 100, 100, 50))
-buttons_chose_level.append(Button("3", 650, 100, 100, 50))
+buttons_chose_level.append(Button("2", 50, 100, 100, 50))
+buttons_chose_level.append(Button("3", 850, 100, 100, 50))
 
 def check_button_click(mouse_pos):
     for button in buttons:
@@ -78,4 +60,3 @@ def draw_buttons():
 def draw_buttons_level():
     for button in buttons_chose_level:
         button.draw(window)
-
