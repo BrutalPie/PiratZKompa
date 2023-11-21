@@ -32,31 +32,34 @@ class Button:
             self.clicked = True
         else:
             self.clicked = False
-            return False
         return self.clicked
-# Создаем несколько кнопок и добавляем их в список
-buttons.append(Button("Play", 100, 100, 200, 50))
-buttons.append(Button("Settings", 100, 200, 200, 50))
-buttons.append(Button("Exit", 100, 300, 200, 50))
-
-buttons_chose_level.append(Button("1", 450, 100, 100, 50))
-buttons_chose_level.append(Button("2", 50, 100, 100, 50))
-buttons_chose_level.append(Button("3", 850, 100, 100, 50))
 
 def check_button_click(mouse_pos):
     for button in buttons:
         if button.check_click(mouse_pos):
+            print(button.text)
             return button
-    return None
+ 
 def check_button_click_level(mouse_pos):
-    for button in buttons_chose_level:
-            if button.check_click(mouse_pos):
-                return button
+    for t in buttons_chose_level:
+        if t.check_click(mouse_pos):
+            
+            return t.text
 
 def draw_buttons():
     for i in buttons:
         i.draw(window)
 
 def draw_buttons_level():
-    for button in buttons_chose_level:
-        button.draw(window)
+    for t in buttons_chose_level:
+        t.draw(window)
+
+
+# Создаем несколько кнопок и добавляем их в список
+buttons.append(Button("Play", 100, 100, 200, 50))
+buttons.append(Button("Settings", 100, 200, 200, 50))
+buttons.append(Button("Exit", 100, 300, 200, 50))
+
+buttons_chose_level.append(Button("1", 450, 100, 100, 50))
+buttons_chose_level.append(Button("2", 650, 100, 100, 50))
+buttons_chose_level.append(Button("3", 850, 100, 100, 50))

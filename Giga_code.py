@@ -122,6 +122,7 @@ click = 0
 y = 1
 barriers = 0
 monsters = 0
+show_levels = 0 
 while run:
 
     time.delay(5)
@@ -143,10 +144,7 @@ while run:
             elif e.key == K_SPACE:
                 packman.fire(direction)
                 strike+=1
-            elif e.key == K_ESCAPE:
-                choose_display = 0
-                
-                back = transform.scale(image.load('image/island.png'),(win_width,win_height))
+           
             #elif e.key ==K_f:
                 #open_shop = True
             #elif e.key == K_1:
@@ -168,32 +166,50 @@ while run:
             elif e.key == K_s:
                 packman.y_speed = 0
         elif e.type == MOUSEBUTTONDOWN:
-                mouse_pos = mouse.get_pos()  # Получаем позицию мыши при клике
+                mouse_pos = mouse.get_pos()
                 clicked_button = check_button_click(mouse_pos)
-                clicked_button_level = check_button_click_level(mouse_pos)
+                
                 if clicked_button is not None:
                     if clicked_button.text == "Play":
-                        print(5+3)
-                        draw_buttons_level() 
-                        if clicked_button is not None:
-                            if clicked_button_level.text == "1": 
-                                import level_1
-                                back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
-                                window.blit(back,(0,0))
-                                barriers = level_1.ret_barriers()
-                                monsters = level_1.ret_monsters()
-                                choose_display = 1
-        
-                
-                    if clicked_button.text == "Settings": 
+                        print(clicked_button.text)
+                        show_levels = 1
+                            
+                    if clicked_button.text == "Settings":
+                        print(clicked_button.text)
+                        
                         pass
                     if clicked_button.text == "Exit":
+                        print(clicked_button.text)
                         quit()
         
         if choose_display == 0:
             window.blit(back,(0,0))
-            draw_buttons()
-            
+            if show_levels == 0:
+                draw_buttons()
+                
+            if show_levels ==1:
+                draw_buttons_level()
+                clicked_button_level = check_button_click_level(mouse_pos)
+                print(clicked_button_level)
+
+                if clicked_button_level == "1": 
+                    import level_1
+                    back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
+                    window.blit(back,(0,0))
+                    barriers = level_1.ret_barriers()
+                    monsters = level_1.ret_monsters()
+                    show_levels = 2
+                    choose_display = 1
+
+                if clicked_button_level == "2": 
+                    import level_2
+                    back = transform.scale(image.load('image/cave.png'),(win_width,win_height))
+                    window.blit(back,(0,0))
+                    barriers = level_2.ret_barriers()
+                    monsters = level_2.ret_monsters()
+                    show_levels = 2
+                    choose_display = 1
+                            
         if  choose_display == 1:
             
             
@@ -244,7 +260,7 @@ while run:
                 d = img.get_width() // img.get_height()
                     
                 window.blit(img, (0, 0))
-                #choose_display = 0
+                choose_display = 0
                     
             
             if len(monsters) == 0:
@@ -273,6 +289,6 @@ while run:
                     #show = f1.render(shop_message,True,(59, 58, 120))
                     #window.blit(show,(300,600))
                     #buy=False'''
-                
+            
 
     display.update()
