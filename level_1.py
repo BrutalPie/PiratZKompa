@@ -10,7 +10,7 @@ def ret_barriers():
     w2 = GameSprite('image/stone.jpg', 765 ,664, 676, 41)
     w4 = GameSprite('image/stone.jpg', 1424 ,490 , 67, 332)
     w6 = GameSprite('image/stone.jpg', 224 ,-207 , 67, 332)
-    purse = GameSprite('image/purse.png', 1800 * 0.73,690 * 1.69, 80 * 0.73,80 * 1.69)
+    purse = GameSprite('image/purse.png', 1800 ,690 , 80 ,80)
     murders = GameSprite('image/kill.png', 1240,10, 130,130)
 
     barriers.add(w1)
@@ -40,3 +40,19 @@ def ret_monsters():
     monster3.update(1088,1311)
     monster4.update(0,228)
     return monsters
+
+def ret_coin():
+    coins = sprite.Group()
+    coin1 = GameSprite('image/coin.png', 46,60, 50,50)
+    coin2 = GameSprite('image/coin.png', 78,30, 50,50)
+
+    coins.add(coin1)
+    coins.add(coin2)
+
+    return coins
+
+def ret_shop():
+    shops = sprite.Group()
+    shope = GameSprite('image/shop.png', 923,430, 50,50)
+    shops.add(shope)
+    return shops

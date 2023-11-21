@@ -40,3 +40,20 @@ def ret_monsters():
     monster3.update(1088,1311)
     monster4.update(0,228)
     return monsters
+
+def ret_coin():
+    coins = sprite.Group()
+    coin1 = GameSprite('image/coin.png', 331,62, 50,50)
+    coin2 = GameSprite('image/coin.png', 991,532, 50,50)
+    
+    coins.add(coin1)
+    coins.add(coin2)
+
+    return coins
+def ret_shop():
+    shops = sprite.Group()
+    shope = GameSprite('image/shop.png', 935,434, 50,50)
+
+    shops.add(shope)
+    
+    return shops
