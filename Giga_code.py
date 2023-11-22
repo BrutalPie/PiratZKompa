@@ -4,6 +4,7 @@ from MenuButton import *
 pygame.init()
 
 direction = "right"
+clock = pygame.time.Clock()
 
 class Player(GameSprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_x_speed,player_y_speed):
@@ -75,7 +76,6 @@ def choose_level():
         show_levels = 2
         in_level = True
         
-        
     if clicked_button_level == "2-level": 
         import level_2
         background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
@@ -91,7 +91,7 @@ def choose_level():
 display.set_caption("Labirint")
 back = transform.scale(image.load('image/island.png'),(win_width,win_height))
 
-packman = Player('image/Pirat.png', 3, win_height - 90, 80, 85, 0, 0)
+packman = 0
 final_sprite = GameSprite('image/Pirat.png', win_width/2-100/2, win_height/2-100/2, 100, 100)
 
 bullets_left = sprite.Group()
@@ -110,7 +110,7 @@ f1 = font.SysFont('monospaced', 80)
 click = 0
 click_escape = 0
 while run:
-    time.delay(15)
+    clock.tick(60)
     for e in event.get():
         if e.type == QUIT:
             run = False
@@ -125,13 +125,20 @@ while run:
                 packman.y_speed = -3
             elif e.key == K_s:
                 packman.y_speed = 3
+
             elif e.key == K_ESCAPE:
-                print(1)
-                if show_levels == 2:
+                in_level = False
+                click_escape += 1
+                if in_level == False:
                     show_levels = 1
-                    click_escape+=1
-                elif show_levels ==1 and click_escape == 1:
+                    print("out Level")
+
+
+                elif show_levels ==1 and click_escape >= 2:
+                    print("out menu")
                     show_levels = 0
+                    click_escape = 0
+
             elif e.key == K_SPACE:
                 packman.fire(direction)
                 strike+=1 
@@ -176,6 +183,7 @@ while run:
                 
             elif show_levels == 1:
                 draw_buttons_level()
+                packman = Player('image/Pirat.png', 3, win_height - 90, 80, 85, 0, 0)
                 background, barriers, monsters, coins, shops, show_levels, in_level = choose_level()
                   
         elif in_level :
@@ -221,7 +229,9 @@ while run:
                 img = transform.scale(image.load("image/lose.png"),(win_width,win_height))
                 death = img.get_width() // img.get_height()   
                 window.blit(img, (0, 0))
-                choose_display = 0
+                show_levels = 0
+                in_level = False
+                
             
             if len(monsters) == 0:
                 final_sprite.reset()
@@ -229,6 +239,8 @@ while run:
                     finish = True
                     img = transform.scale(image.load("image/win.png"),(win_width,win_height))
                     window.blit(img, (0, 0))
+                    show_levels = 0
+                    in_level = False
 
             if sprite.spritecollide(packman, shops, False) and open_shop == True:
                 imge = transform.scale(image.load("image/shop.jpg"),(win_width,win_height))
@@ -249,5 +261,6 @@ while run:
                     show = f1.render(shop_message,True,(59, 58, 120))
                     window.blit(show,(300,600))
                     buy=False
+                    money-=1
 
     display.update()
