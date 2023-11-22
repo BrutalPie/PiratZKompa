@@ -66,6 +66,7 @@ def choose_level():
     global background, barriers, monsters, coins, shops, show_levels, in_level
     clicked_button_level = check_button_click_level(mouse_pos)
     if clicked_button_level == "1": 
+        print(3)
         import level_1
         background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
         barriers = level_1.ret_barriers()
@@ -186,7 +187,7 @@ while run:
             bullets_right.draw(window)
             
             win = f1.render(str(money),True,(59, 58, 120))
-            window.blit(win,(1250,700))#Лічильник монет    
+            window.blit(win,(1250,700))   
                 
             killl = f1.render(str(murder),True,(59, 58, 120))
             window.blit(killl,(1290,130))
