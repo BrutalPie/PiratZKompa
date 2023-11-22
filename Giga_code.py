@@ -1,7 +1,6 @@
 import pygame
 from Main import *
 from MenuButton import *
-import level_1
 pygame.init()
 
 direction = "right"
@@ -61,12 +60,12 @@ barriers = None
 monsters = None
 coins = None
 shops =None
+mouse_pos = 0
 
 def choose_level():
     global background, barriers, monsters, coins, shops, show_levels, in_level
     clicked_button_level = check_button_click_level(mouse_pos)
-    if clicked_button_level == "1": 
-        print(3)
+    if clicked_button_level == "1-level": 
         import level_1
         background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
         barriers = level_1.ret_barriers()
@@ -76,7 +75,8 @@ def choose_level():
         show_levels = 2
         in_level = True
         
-    if clicked_button_level == "2": 
+        
+    if clicked_button_level == "2-level": 
         import level_2
         background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
         barriers = level_2.ret_barriers()
@@ -107,9 +107,8 @@ buy=False
 font.init()
 f1 = font.SysFont('monospaced', 80)
 
-global mouse_pos
-mouse_pos = 0
 click = 0
+click_escape = 0
 while run:
     time.delay(15)
     for e in event.get():
@@ -126,7 +125,13 @@ while run:
                 packman.y_speed = -3
             elif e.key == K_s:
                 packman.y_speed = 3
-            
+            elif e.key == K_ESCAPE:
+                print(1)
+                if show_levels == 2:
+                    show_levels = 1
+                    click_escape+=1
+                elif show_levels ==1 and click_escape == 1:
+                    show_levels = 0
             elif e.key == K_SPACE:
                 packman.fire(direction)
                 strike+=1 
