@@ -85,10 +85,20 @@ def choose_level():
         shops = level_2.ret_shop()
         show_levels = 2
         in_level = True
+
+    if clicked_button_level == "3-level": 
+        import level_3
+        background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
+        barriers = level_3.ret_barriers()
+        monsters = level_3.ret_monsters()
+        coins = level_3.ret_coin()
+        shops = level_3.ret_shop()
+        show_levels = 2
+        in_level = True
     
     return background, barriers, monsters, coins, shops, show_levels, in_level
     
-display.set_caption("Labirint")
+display.set_caption("PiratesGame")
 back = transform.scale(image.load('image/island.png'),(win_width,win_height))
 
 packman = 0
