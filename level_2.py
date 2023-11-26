@@ -6,12 +6,12 @@ def ret_barriers():
     
     w1 = GameSprite('image/stone.jpg', 100 ,300 , 400, 50)
     w5 = GameSprite('image/stone.jpg', 100 ,315 , 67, 332)
-    w3 = GameSprite('image/stone.jpg', 224 ,100, 676, 41)
+    w3 = GameSprite('image/stone.jpg', 300 ,100, 676, 41)
     w2 = GameSprite('image/stone.jpg', 405 ,894, 676, 41)
     w4 = GameSprite('image/stone.jpg', 1124 ,490 , 67, 332)
     w6 = GameSprite('image/stone.jpg', 294 ,-207 , 67, 332)
-    purse = GameSprite('image/purse.png', 1800 ,690 , 80 ,80)
-    murders = GameSprite('image/kill.png', 1240,10, 130,130)
+    purse = GameSprite('image/purse.png', 1800 ,10 , 120 ,120)
+    murders = GameSprite('image/kill.png', 1650,10, 130,130)
 
     barriers.add(w1)
     barriers.add(w2)
@@ -25,10 +25,10 @@ def ret_barriers():
 
 def ret_monsters():
     monsters = sprite.Group()
-    monster1 = Enemy('image/Pumpkin.png', 328, 285, 50, 80, 5)
-    monster2 = Enemy('image/Pumpkin.png', 988, 403, 50, 80, 3)
-    monster3 = Enemy('image/Pumpkin.png', 1088, 488, 50, 80, 4)
-    monster4 = Enemy('image/Pumpkin.png', 228, 240, 50, 80, 2)
+    monster1 = Enemy('image/Pumpkin.png', 500, 950, 50, 80, 5)
+    monster2 = Enemy('image/Pumpkin.png', 268, 403, 50, 80, 3)
+    monster3 = Enemy('image/Pumpkin.png', 300, 180, 50, 80, 4)
+    monster4 = Enemy('image/Pumpkin.png', 900, 20, 50, 80, 2)
 
     monsters.add(monster1)
     monsters.add(monster2)
@@ -43,8 +43,8 @@ def ret_monsters():
 
 def ret_coin():
     coins = sprite.Group()
-    coin1 = GameSprite('image/coin.png', 331,62, 50,50)
-    coin2 = GameSprite('image/coin.png', 991,532, 50,50)
+    coin1 = GameSprite('image/coin.png', 364,50, 50,50)
+    coin2 = GameSprite('image/coin.png', 1200,572, 50,50)
     
     coins.add(coin1)
     coins.add(coin2)
@@ -52,8 +52,7 @@ def ret_coin():
     return coins
 def ret_shop():
     shops = sprite.Group()
-    shope = GameSprite('image/shop.png', 935,434, 50,50)
-
+    shope = GameSprite('image/shop.png', 750,55, 50,50)
     shops.add(shope)
     
     return shops

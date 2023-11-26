@@ -129,12 +129,8 @@ while run:
             elif e.key == K_ESCAPE:
                 in_level = False
                 click_escape += 1
-                if in_level == False:
-                    show_levels = 1
-                    print("out Level")
-
-
-                elif show_levels ==1 and click_escape >= 2:
+                show_levels = 1
+                if show_levels ==1 and click_escape == 2:
                     print("out menu")
                     show_levels = 0
                     click_escape = 0
@@ -144,12 +140,17 @@ while run:
                 strike+=1 
             elif e.key ==K_f:
                 open_shop = True
-            elif e.key == K_1:
-                buy=True       
-            elif e.key == K_c:
-                open_shop = False
-                background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
-                window.blit(background,(0,0))
+            if open_shop == True:
+                if e.key == K_1:
+                    buy=1
+                elif e.key == K_2:
+                    buy = 2
+                elif e.key == K_3:
+                    buy = 3                
+                elif e.key == K_c:
+                    open_shop = False
+                    background = transform.scale(image.load('image/cave.png'), (win_width, win_height))
+                    window.blit(background,(0,0))
                 
         elif e.type == KEYUP:
             if e.key == K_a:
@@ -182,6 +183,7 @@ while run:
                 draw_buttons()
                 
             elif show_levels == 1:
+                murder = 0
                 draw_buttons_level()
                 packman = Player('image/Pirat.png', 3, win_height - 90, 80, 85, 0, 0)
                 background, barriers, monsters, coins, shops, show_levels, in_level = choose_level()
@@ -200,10 +202,10 @@ while run:
             bullets_right.draw(window)
             
             win = f1.render(str(money),True,(59, 58, 120))
-            window.blit(win,(1250,700))   
+            window.blit(win,(1850,130))   
                 
             killl = f1.render(str(murder),True,(59, 58, 120))
-            window.blit(killl,(1290,130))
+            window.blit(killl,(1697,130))
             
             bullets_left.update("left")
             bullets_right.update("right")
@@ -231,8 +233,7 @@ while run:
                 window.blit(img, (0, 0))
                 show_levels = 0
                 in_level = False
-                
-            
+                  
             if len(monsters) == 0:
                 final_sprite.reset()
                 if sprite.collide_rect(packman, final_sprite):
@@ -256,8 +257,20 @@ while run:
                 ware.add(dig)
 
                 ware.draw(window)
-                if buy == True and money>=1: 
+                if buy == 1 and money>=1: 
                     shop_message = "ви купили кирку"
+                    show = f1.render(shop_message,True,(59, 58, 120))
+                    window.blit(show,(300,600))
+                    buy=0
+                    money-=1
+                if buy == 2 and money>=2:
+                    shop_message = "ви купили карту"
+                    show = f1.render(shop_message,True,(59, 58, 120))
+                    window.blit(show,(300,600))
+                    buy=False
+                    money-=1
+                if buy == 3 and money>=1:
+                    shop_message = "ви купили лопату"
                     show = f1.render(shop_message,True,(59, 58, 120))
                     window.blit(show,(300,600))
                     buy=False

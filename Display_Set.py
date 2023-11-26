@@ -1,5 +1,4 @@
 import pygame
-
 pygame.init()
 
 global win_width 

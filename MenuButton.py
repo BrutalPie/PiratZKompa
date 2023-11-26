@@ -2,18 +2,15 @@ import pygame
 from pygame import draw, font, Rect
 from Main import win_width, win_height, window
 
-# Инициализация Pygame
 pygame.init()
 
-# кольори
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
-# Создаем список кнопок
 global buttons
 buttons = []
 buttons_chose_level = []
-# Создаем класс для кнопок
+
 class Button:
     def __init__(self, text, x, y, width, height):
         self.rect = Rect(x, y, width, height)
