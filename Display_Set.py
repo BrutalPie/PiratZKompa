@@ -1,6 +1,6 @@
 import pygame
 pygame.init()
-
+#визначення методом роздільну здатність екрану
 global win_width 
 global win_height
 win_info = pygame.display.Info()
