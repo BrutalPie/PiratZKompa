@@ -1,6 +1,6 @@
 from pygame import *
 from Display_Set import *
-
+#Головний класс з бібліотеки Pygame для створення/додавання/обробки/тд спрайтів
 class GameSprite(sprite.Sprite):
     def __init__(self, player_image, player_x, player_y, size_x, size_y):
 
@@ -14,7 +14,7 @@ class GameSprite(sprite.Sprite):
 
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
-        
+#класс ворога який наслідує класс GameSprite
 class Enemy(GameSprite):
     side = "left"
     def __init__(self, player_image, player_x, player_y, size_x, size_y, player_speed):

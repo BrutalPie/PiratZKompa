@@ -1,6 +1,6 @@
 from pygame import *
 from Main import *
-
+#створення об'єктів(стін), та додавання їх до списку
 def ret_barriers():
     barriers = sprite.Group()
     
@@ -18,7 +18,7 @@ def ret_barriers():
     barriers.add(purse)
     barriers.add(murders)
     return barriers
-
+#створення об'єктів(монстрів), та додавання їх до списку
 def ret_monsters():
     monsters = sprite.Group()
     monster1 = Enemy('image/Pumpkin.png', 300, 165, 50, 80, 5)
@@ -38,7 +38,7 @@ def ret_monsters():
     monster3.update(1088,1311)
     monster4.update(0,228)
     return monsters
-
+#створення об'єктів(монет), та додавання їх до списку
 def ret_coin():
     coins = sprite.Group()
     coin1 = GameSprite('image/coin.png', 364,50, 50,50)
@@ -69,7 +69,7 @@ def ret_coin():
     coins.add(coin12)
     coins.add(coin13)
     return coins
-
+#створення об'єктів(магазин), та додавання їх до списку
 def ret_shop():
     shops = sprite.Group()
     shope = GameSprite('image/shop.png', 450,55, 50,50)
