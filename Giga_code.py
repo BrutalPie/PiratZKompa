@@ -1,7 +1,9 @@
 import pygame
 from Main import *
 from MenuButton import *
+import time
 pygame.init()
+start_time = time.time()
 
 direction = "right"
 clock = pygame.time.Clock() #оновлення кадрів(метод бібліотеки)
@@ -330,4 +332,7 @@ while run:
                     buy=False
                     money-=1
     #оновлення сцени
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"Программа виконана за {execution_time} секунд")
     display.update()
