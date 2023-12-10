@@ -141,9 +141,11 @@ while run:
             elif e.key == K_d:
                 direction = "right"
                 packman.x_speed = 3
+                pygame.key.set_repeat(10,10)
             #перевірка натиску клавіші w, та рух вверх на 3 пікселі
             elif e.key == K_w:
                 packman.y_speed = -3
+                
             #перевірка натиску клавіші s, та рух вниз на 3 пікселі
             elif e.key == K_s:
                 packman.y_speed = 3
